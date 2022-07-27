@@ -1,0 +1,185 @@
+body {
+    font-family: "Montserrat", "sans-serif";
+}
+
+.header-principal {
+    background-image: url(./imagenes/portada-new.jpg);
+    background-size: cover;
+
+
+
+
+
+}
+
+.header-principal .caja {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.headerPrincipal-nav .nav-menu {
+    display: flex;
+    align-items: flex-start;
+
+
+
+
+}
+
+.headerPrincipal-nav li {
+    margin-left: 40px;
+    padding-top: 60px;
+
+}
+
+
+
+
+
+
+
+.logo {
+    border-radius: 100px;
+
+
+}
+
+
+
+
+
+
+
+
+nav a {
+    text-transform: uppercase;
+    font-family: 'Anek Devanagari', sans-serif;
+    /* transforma el texto a mayúscula*/
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    background: none;
+    border: none;
+
+
+
+
+
+
+}
+
+nav a:hover {
+
+
+    transform: scale(2);
+    transition: 1.5s;
+    font-size: 35px;
+    text-shadow: 7px -8px 9px rgba(0, 0, 0, 0.94);
+
+
+}
+
+.boton-login {
+    background: #999797;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+main {
+    background: #F6F8B4;
+}
+
+.productos {
+
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.productos li {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+
+    border: 1px black solid;
+    border-radius: 15px;
+    height: 550px;
+    width: 300px;
+
+    padding: 30px 20px;
+    box-sizing: border-box;
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    background: linear-gradient(110deg, white 40%, gray 60%);
+
+
+}
+
+.productos h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+
+.imagenes-productos {
+    height: 350px;
+    width: 200px;
+    border-radius: 15px;
+
+}
+
+
+.producto-descripcion {
+    margin: 20px 0;
+    font-size: 18px;
+
+}
+
+.producto-precio {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.boton-productos {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: #d46f1b;
+    color: white;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.boton-productos:active {
+    background: greenyellow;
+
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+
+    background: url(imagenes/bg.jpg);
+}
+
+.logo-footer {
+    border-radius: 100px;
+}
+
+.copyright {
+    color: white;
+    font-size: 13px;
+    margin: 20px;
+}
