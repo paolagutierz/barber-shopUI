@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logoNew from '../images/Logonew.jpg'
 import '../css/components/header.css'
+import LoginModal from '../components/LoginModal'
+import RegisterModal from './RegisterModal'
 
 function Header() {
+    const [isOpenLogin, setIsOpenLogin] = useState(false)
+    const [isOpenRegister, setIsOpenRegister] = useState(false)
+
     const handleLoginClick = (event) => {
         event.preventDefault();
-        console.log("click login")
+        setIsOpenLogin(true)
     }
 
     return (
@@ -25,6 +30,8 @@ function Header() {
                     </ul>
                 </nav>
             </div>
+            <LoginModal show={isOpenLogin} closeModal={() => setIsOpenLogin(false)} openRegister={() => setIsOpenRegister(true)}></LoginModal>
+            <RegisterModal show={isOpenRegister} closeModal={() => setIsOpenRegister(false)}></RegisterModal>
         </header>
     )
 }
