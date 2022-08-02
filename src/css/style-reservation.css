@@ -1,0 +1,122 @@
+.reservas-lista {
+    margin: 0 50px;
+
+}
+
+.reservas-lista h1 {
+    font-size: 25px;
+    font-weight: bolder;
+    margin: 15px 80px;
+}
+
+
+.reservas-lista ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    border-radius: 15px;
+    width: 40%;
+    margin: 30px 40px;
+    padding: 30px 30px;
+    background: rgb(223, 203, 118);
+}
+
+.reservas-lista li {
+    font-weight: bold;
+}
+
+
+
+.boton-lista {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    background: red;
+    color: white;
+    margin: 15px 15px 15px 15px;
+    font-weight: bold;
+}
+
+.boton-reserva:active {
+    transform: scale(1.2);
+
+}
+
+.crear-reserva {
+    font-size: 35px;
+    font-weight: bolder;
+
+}
+
+main .crear-reserva {
+    display: flex;
+    justify-content: center;
+
+}
+
+.reserva {
+
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.reserva li {
+    text-align: center;
+    width: 30%;
+    box-shadow: 7px -4px 18px 1px black;
+    border: none;
+    border-radius: 15px;
+    height: 550px;
+    width: 300px;
+
+    padding: 30px 20px;
+    box-sizing: border-box;
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+
+    background: linear-gradient(110deg, white 40%, gray 60%);
+}
+
+.reserva h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.imagenes-reserva {
+    height: 350px;
+    width: 200px;
+    border-radius: 15px;
+
+}
+
+
+.reserva-descripcion {
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+
+
+.boton-reserva {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: #2e2d2c;
+    color: white;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.boton-reserva:active {
+    background: greenyellow;
+
+}
