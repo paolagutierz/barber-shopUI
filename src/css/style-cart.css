@@ -1,0 +1,181 @@
+.containers {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+main .titulo-carrito {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+
+
+
+}
+
+.titulo-productos-cart {
+    font-size: 30px;
+}
+
+.titulo-descripcion {
+    font-size: 30px;
+}
+
+
+.productos-cart {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
+}
+
+.productos-carrito {
+    flex: 5;
+
+
+}
+
+
+
+.productos-cart li {
+    display: inline-block;
+    text-align: center;
+    width: 30%;
+
+    border: 2px black solid;
+    border-radius: 20px;
+    height: 190px;
+    width: 130px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    margin: 40px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+
+
+
+
+}
+
+.productos-cart h2 {
+    font-size: 15px;
+    font-weight: bold;
+
+}
+
+
+
+.imagenes-productos-cart {
+    height: 70px;
+    width: 70px;
+    border-radius: 15px;
+    margin: 10px 0;
+}
+
+
+.boton-productos-cart {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    background: red;
+    color: white;
+    margin: 15px 15px 15px 15px;
+    font-weight: bold;
+}
+
+.boton-productos-cart:active {
+    transform: scale(1.2);
+}
+
+.boton-cantidad-cart {
+    display: flex;
+    align-items: center;
+    background: red;
+    border-radius: 10px;
+    padding: 2px 0;
+    margin-left: 20px;
+    margin: 15px 15px 15px 15px;
+
+}
+
+.boton-operador-cart {
+    border-radius: 20px;
+    color: white;
+    background: #2e2d2c;
+    height: 25px;
+    width: 25px;
+    margin-left: 8px;
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.boton-operador-cart:active {
+    background: gray;
+
+}
+
+.cantidad-cart {
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+.descripcion {
+    flex: 3;
+}
+
+.descripcion-carrito {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+
+}
+
+
+
+.lista-descripcion {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 90px;
+
+
+
+}
+
+.lista-descripcion li {
+    font-size: 20px;
+    margin-top: 30px;
+    text-decoration: dotted;
+}
+
+.pago {
+    margin-top: 80px;
+}
+
+
+
+
+.titulo-pago {
+    font-size: 25px;
+}
+
+.boton-pago {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 100px;
+    background: #2e2d2c;
+    color: white;
+    margin: 30px 0 0 100px;
+    font-weight: bold;
+}
+
+.boton-pago:active {
+
+    transform: scale(1.2);
+    background: rgb(84, 81, 81);
+}

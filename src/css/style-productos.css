@@ -77,6 +77,37 @@ main {
 }
 
 .boton-productos:active {
-    background: greenyellow;
+    background: #cdaa8d;
 
+}
+
+.boton-cantidad {
+    display: flex;
+    align-items: center;
+    background: #d46f1b;
+    border-radius: 10px;
+    padding: 4.5px 2px;
+    margin-left: 20px;
+
+}
+
+.boton-operador {
+    border-radius: 20px;
+    color: white;
+    background: #2e2d2c;
+    height: 25px;
+    width: 25px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.boton-operador:active {
+    background: gray;
+
+}
+
+.cantidad {
+    font-weight: bold;
+    font-size: 20px;
 }

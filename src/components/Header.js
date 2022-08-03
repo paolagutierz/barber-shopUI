@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import logoNew from '../images/Logonew.jpg'
 import '../css/components/header.css'
 import LoginModal from '../components/LoginModal'
 import RegisterModal from './RegisterModal'
+import { CartContext } from '../providers/cart'
 
 function Header() {
     const [isOpenLogin, setIsOpenLogin] = useState(false)
     const [isOpenRegister, setIsOpenRegister] = useState(false)
+
+    const { productsCantity } = useContext(CartContext)
 
     const handleLoginClick = (event) => {
         event.preventDefault();
@@ -25,7 +28,10 @@ function Header() {
                         <li><Link to="/orders">Mis pedidos</Link></li>
                         <li><Link to="/reservation">Reservas</Link></li>
                         <li><button className="boton-login"><a onClick={(event) => handleLoginClick(event)}>Login</a></button></li>
-                        <li> <Link to="cart.html">&#128722;</Link></li>
+                        <li>
+                            <Link to="/cart">&#128722;</Link>
+                            {productsCantity > 0 && <div className='cart-number'>{productsCantity}</div>}
+                        </li>
 
                     </ul>
                 </nav>

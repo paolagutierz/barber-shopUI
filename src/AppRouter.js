@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Products from './pages/Products';
 import Orders from './pages/Orders';
 import Reservation from './pages/Reservation';
+import Cart from './pages/Cart';
 
 function AppRouter() {
     return (
@@ -12,6 +13,7 @@ function AppRouter() {
             <Route path='/products' element={<Products />}></Route>
             <Route path='/orders' element={<Orders />}></Route>
             <Route path='/reservation' element={<Reservation />}></Route>
+            <Route path='/cart' element={<Cart />}></Route>
         </Routes>
     )
 }
