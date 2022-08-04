@@ -7,10 +7,12 @@ import CartDescription from '../components/CartDescription'
 
 function Cart() {
 
-    const { addedProducts, total, resetCart } = useContext(CartContext)
+    const { addedProducts, total, resetCart, setAlert } = useContext(CartContext)
 
     const handlePay = () => {
+        //mandar al back la solicitud de compra
         console.log(addedProducts)
+        setAlert({ text: `Se realizo la compra exitosamente! con un total de $${total}`, type: "green" })
         resetCart()
     }
 
@@ -38,8 +40,8 @@ function Cart() {
                     <div className="descripcion">
                         <h2 className="titulo-descripcion">Descripción:</h2>
                         <ul className="lista-descripcion">
-                            {addedProducts.map(description =>
-                                <CartDescription name={description.name} quantity={description.quantity} ></CartDescription>
+                            {addedProducts.map(product =>
+                                <CartDescription name={product.name} quantity={product.quantity} ></CartDescription>
                             )}
 
                         </ul>

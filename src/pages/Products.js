@@ -58,13 +58,14 @@ const fakeResponse = [
 
 function Products() {
     return (
-        <Page><main>
-            <ul class="productos">
-                {fakeResponse.map(product =>
-                    <Product name={product.name} image={product.image} description={product.description} price={product.price} id={product.id}></Product>
-                )}
-            </ul>
-        </main>
+        <Page>
+            <main>
+                <ul class="productos">
+                    {fakeResponse.map(product =>
+                        <Product name={product.name} image={product.image} description={product.description} price={product.price} id={product.id}></Product>
+                    )}
+                </ul>
+            </main>
         </Page>
     )
 }

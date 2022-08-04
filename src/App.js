@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import AppRouter from "./AppRouter";
 import { BrowserRouter } from "react-router-dom";
 import { CartContext } from "./providers/cart"
+import Alert from "./components/Alert";
 
 function App() {
   const [productsCantity, setProductsCantity] = useState(0)
   const [total, setTotal] = useState(0)
   const [addedProducts, setAddedProducts] = useState([])
+  const [alert, setAlert] = useState()
 
   const resetCart = () => {
     setAddedProducts([])
@@ -16,7 +18,7 @@ function App() {
 
   const addProduct = (productToAdd) => {
     let addedProduct = addedProducts.find(product => product.id === productToAdd.id)
-    let productsModified
+    let productsModified = []
 
     if (addedProduct) {
       productsModified = addedProducts.map(product => {
@@ -57,8 +59,11 @@ function App() {
   }
 
   return (
-    <CartContext.Provider value={{ total, setTotal, addedProducts, addProduct, removeProduct, resetCart, productsCantity }}>
+    <CartContext.Provider value={{ total, setTotal, addedProducts, addProduct, removeProduct, resetCart, productsCantity, setAlert }}>
       <BrowserRouter>
+        {alert &&
+          <Alert alert={alert} removeAlert={() => setAlert(null)}></Alert>
+        }
         <AppRouter></AppRouter>
       </BrowserRouter >
     </CartContext.Provider>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { CartContext } from "../providers/cart"
 
 function CartProduct({ name, quantity, image, id, price }) {

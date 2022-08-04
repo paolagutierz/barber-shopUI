@@ -6,14 +6,14 @@ function Product({ name, image, description, price, id }) {
     const [quantity, setQuantity] = useState(0)
 
     useEffect(() => {
-        const addedProduct = addedProducts?.find(product => product.id == id)
+        const addedProduct = addedProducts.find(product => product.id == id)
 
         if (addedProduct) {
             setQuantity(addedProduct.quantity)
         } else {
             setQuantity(0)
         }
-    });
+    }, [addedProducts]);
 
     return (
         <li>
