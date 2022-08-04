@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { TYPES } from '../components/Alert'
 import Order from '../components/Order'
 import Page from '../components/Page'
 import '../css/style-pedidos.css'
+import { CartContext } from '../providers/cart'
 
 const fakeResponse = [
     {
@@ -35,6 +37,13 @@ const fakeResponse = [
 ]
 
 function Orders() {
+
+    const { setAlert } = useContext(CartContext)
+
+    useEffect(() => {
+        setAlert({ text: "Los pedidos pueden ser cancelados un dia antes de ser despachados", type: TYPES.WARNING })
+    }, [])
+
     return (
         <Page>
             <main>

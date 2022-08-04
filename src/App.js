@@ -62,11 +62,11 @@ function App() {
     <CartContext.Provider value={{ total, setTotal, addedProducts, addProduct, removeProduct, resetCart, productsCantity, setAlert }}>
       <BrowserRouter>
         {alert &&
-          <Alert alert={alert} removeAlert={() => setAlert(null)}></Alert>
+          <Alert alert={alert} removeAlert={() => setAlert(null)} timeout={alert.timeout}></Alert>
         }
         <AppRouter></AppRouter>
       </BrowserRouter >
-    </CartContext.Provider>
+    </CartContext.Provider >
   );
 }
 

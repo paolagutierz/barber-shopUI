@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Page from '../components/Page'
 import '../css/style-reservation.css'
 import Barber1 from '../images/barber 1.jpg'
 import Barber2 from '../images/barber 2.jpg'
 import Barber3 from '../images/barber 3.jpg'
 import Barber from '../components/Barber'
+import { CartContext } from '../providers/cart'
+import { TYPES } from '../components/Alert'
 
 const fakeReservations = [
     {
@@ -55,6 +57,13 @@ const fakeBarbers = [
 ]
 
 function Reservation() {
+
+    const { setAlert } = useContext(CartContext)
+
+    useEffect(() => {
+        setAlert({ text: "Las reservas deben cancelarse con un día antes de anticipación", type: TYPES.WARNING })
+    }, [])
+
     return (
         <Page>
             <main>

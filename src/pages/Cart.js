@@ -4,16 +4,22 @@ import '../css/style-cart.css'
 import { CartContext } from '../providers/cart'
 import CartProduct from '../components/CartProduct'
 import CartDescription from '../components/CartDescription'
+import { TYPES } from "../components/Alert"
+import axios from "axios"
 
 function Cart() {
 
     const { addedProducts, total, resetCart, setAlert } = useContext(CartContext)
 
-    const handlePay = () => {
-        //mandar al back la solicitud de compra
-        console.log(addedProducts)
-        setAlert({ text: `Se realizo la compra exitosamente! con un total de $${total}`, type: "green" })
-        resetCart()
+    const handlePay = async () => {
+        try {
+            const response = await axios.post("http://localhost:5001/orders", addedProducts)
+            setAlert({ text: `Se realizo la compra exitosamente! con un total de $${total}`, type: TYPES.SUCCESS })
+            resetCart()
+            console.log(response)
+        } catch (error) {
+            setAlert({ text: `Tuvimos inconvenientes en realizar su compra. Por favor intente de nuevo`, type: TYPES.ERROR })
+        }
     }
 
     return (
@@ -29,7 +35,7 @@ function Cart() {
                                 <CartProduct
                                     name={cart.name}
                                     quantity={cart.quantity}
-                                    image={cart.image}
+                                    imageUrl={cart.imageUrl}
                                     id={cart.id}
                                     price={cart.price}>
                                 </CartProduct>
@@ -47,8 +53,8 @@ function Cart() {
                         </ul>
                         <div className="pago">
                             <div className="container-pago">
-                                <h3 className="titulo-pago">Total: {total}</h3>
-                                <button className="boton-pago" onClick={() => handlePay()}>Pagar</button>
+                                <h3 className="titulo-pago">Total: ${total}</h3>
+                                <button className={total == 0 ? "boton-pago-disabled" : "boton-pago"} onClick={() => handlePay()} disabled={total == 0 ? true : false}>Pagar</button>
                             </div>
                         </div>
                     </div>

@@ -29,8 +29,9 @@ function Header() {
                         <li><Link to="/reservation">Reservas</Link></li>
                         <li><button className="boton-login"><a onClick={(event) => handleLoginClick(event)}>Login</a></button></li>
                         <li>
-                            <Link to="/cart">&#128722;</Link>
-                            {productsCantity > 0 && <div className='cart-number'>{productsCantity}</div>}
+                            <Link to="/cart" className='logo-carrito'>&#128722;{productsCantity > 0 && <div className='cart-number'>{productsCantity}</div>}
+                            </Link>
+
                         </li>
 
                     </ul>
