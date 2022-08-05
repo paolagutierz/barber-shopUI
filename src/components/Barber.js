@@ -9,7 +9,7 @@ function Barber(props) {
         <>
             <li>
                 <h2>{props.name} {props.lastName}</h2>
-                <img src={props.image} alt="" className="imagenes-reserva" />
+                <img src={props.imageUrl} alt="" className="imagenes-reserva" />
                 <p className="reserva-descripcion">{props.description}</p>
                 <button className="boton-reserva" onClick={() => setIsCalendarOpen(true)}>Reservar</button>
             </li>

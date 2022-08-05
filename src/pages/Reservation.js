@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Page from '../components/Page'
 import '../css/style-reservation.css'
-import Barber1 from '../images/barber 1.jpg'
-import Barber2 from '../images/barber 2.jpg'
-import Barber3 from '../images/barber 3.jpg'
 import Barber from '../components/Barber'
 import { CartContext } from '../providers/cart'
-import { TYPES } from '../components/Alert'
+import { TYPES, DEFAULT_MESSAGES } from '../components/Alert'
+import axios from "axios"
+import Loading from '../components/Loading'
 
 const fakeReservations = [
     {
@@ -35,33 +34,29 @@ const fakeReservations = [
     }
 ]
 
-const fakeBarbers = [
-    {
-        name: "Jesus",
-        lastName: "Valle",
-        image: Barber1,
-        description: 'Experto en cortes de cabello modernos, diseño de cejas y barba para dar un look sutil y moderno a sus clientes'
-    },
-    {
-        name: "Victor",
-        lastName: "valdés",
-        image: Barber2,
-        description: 'Especializado en cortes de barba clásicos, tintes y peinados para toda tipo de ocasiones.'
-    },
-    {
-        name: "Joaquin",
-        lastName: "Guzmán",
-        image: Barber3,
-        description: 'Profesional en cortes, tinturas y mascarillas para la cara, brindando así un servicio completo a sus clientes.'
-    }
-]
-
 function Reservation() {
 
     const { setAlert } = useContext(CartContext)
 
+    const [barbers, setBarbers] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
     useEffect(() => {
         setAlert({ text: "Las reservas deben cancelarse con un día antes de anticipación", type: TYPES.WARNING })
+
+        async function getBarbers() {
+            setIsLoading(true)
+            try {
+                const response = await axios("http://localhost:5001/barbers")
+                setBarbers(response.data.data)
+            } catch (error) {
+                console.log(error)
+                setAlert({ text: DEFAULT_MESSAGES.SERVER_ERROR, type: TYPES.ERROR, timeout: 5000 })
+            }
+            setIsLoading(false)
+        }
+
+        getBarbers()
 
         return (() => setAlert(null))
     }, [])
@@ -82,14 +77,15 @@ function Reservation() {
                 </div>
                 <h1 className="crear-reserva">Crea tu reserva</h1>
                 <ul className="reserva">
-                    {fakeBarbers.map(barber =>
+                    {barbers.map(barber =>
                         <Barber name={barber.name}
                             lastName={barber.lastName}
-                            image={barber.image}
+                            imageUrl={barber.imageUrl}
                             description={barber.description} />
                     )}
                 </ul>
             </main>
+            <Loading show={isLoading}></Loading>
         </Page>
     )
 }
