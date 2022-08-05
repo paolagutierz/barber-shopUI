@@ -39,6 +39,10 @@
     font-weight: bold;
 }
 
+.boton-lista:active {
+    background: red;
+}
+
 .boton-reserva:active {
     transform: scale(1.2);
 
@@ -117,6 +121,6 @@ main .crear-reserva {
 }
 
 .boton-reserva:active {
-    background: greenyellow;
+    background: #605e5d;
 
 }

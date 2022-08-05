@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Page from '../components/Page'
 import '../css/style-cart.css'
 import { CartContext } from '../providers/cart'
@@ -21,6 +21,11 @@ function Cart() {
             setAlert({ text: `Tuvimos inconvenientes en realizar su compra. Por favor intente de nuevo`, type: TYPES.ERROR })
         }
     }
+
+    //remove alert when component is going to be unmount
+    useEffect(() => {
+        return () => setAlert(null)
+    }, [])
 
     return (
         <Page>

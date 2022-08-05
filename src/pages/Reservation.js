@@ -62,24 +62,26 @@ function Reservation() {
 
     useEffect(() => {
         setAlert({ text: "Las reservas deben cancelarse con un día antes de anticipación", type: TYPES.WARNING })
+
+        return (() => setAlert(null))
     }, [])
 
     return (
         <Page>
             <main>
-                <div class="reservas-lista">
+                <div className="reservas-lista">
                     <h1>Reservas:</h1>
                     <ul>
                         {fakeReservations.map(reservation =>
                             <li>
                                 {`${reservation.name} ${reservation.lastName},${reservation.date}, ${reservation.time}hs`}
-                                <button class="boton-lista">Cancelar</button>
+                                <button className="boton-lista">Cancelar</button>
                             </li>
                         )}
                     </ul>
                 </div>
-                <h1 class="crear-reserva">Crea tu reserva</h1>
-                <ul class="reserva">
+                <h1 className="crear-reserva">Crea tu reserva</h1>
+                <ul className="reserva">
                     {fakeBarbers.map(barber =>
                         <Barber name={barber.name}
                             lastName={barber.lastName}

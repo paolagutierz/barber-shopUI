@@ -42,6 +42,8 @@ function Orders() {
 
     useEffect(() => {
         setAlert({ text: "Los pedidos pueden ser cancelados un dia antes de ser despachados", type: TYPES.WARNING })
+
+        return (() => { setAlert(null) })
     }, [])
 
     return (

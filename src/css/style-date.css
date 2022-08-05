@@ -1,0 +1,85 @@
+.date-picker {
+    height: 350px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.date-picker p {
+    font-weight: bolder;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.date-title {
+    font-size: 20px;
+}
+
+
+
+
+.calendar {
+    padding: 10px 10px;
+    margin: 10px 0 0 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+
+.time-picker {
+    margin-right: 15px;
+
+}
+
+.time-picker p {
+    display: flex;
+    justify-content: center;
+}
+
+.time-title {
+
+    font-size: 20px;
+}
+
+
+
+.time-buttons {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: #2e2d2c;
+    color: white;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.time-buttons:active {
+    background: #605e5d;
+
+}
+
+.reserve-button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 35px;
+    background: #8c8986;
+    color: white;
+    margin: 25px 0 10px 150px;
+    font-weight: bold;
+}
+
+.reserve-button:active {
+    background: #605e5d;
+
+}
