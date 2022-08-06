@@ -25,7 +25,7 @@ function Barber(props) {
                 <p className="reserva-descripcion">{props.description}</p>
                 <button className="boton-reserva" onClick={() => handleCalendarOpen()}>Reservar</button>
             </li>
-            <ModalCalendar show={isCalendarOpen} closeModal={() => setIsCalendarOpen(false)} barberName={props.name}></ModalCalendar>
+            {isCalendarOpen && <ModalCalendar getReservations={props.getReservations} show={isCalendarOpen} closeModal={() => setIsCalendarOpen(false)} barberName={props.name} barberId={props.id}></ModalCalendar>}
         </>
 
     )
