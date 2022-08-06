@@ -14,10 +14,9 @@ function Cart() {
     const handlePay = async () => {
         if (jwt && jwt != "") {
             try {
-                const response = await axios.post("http://localhost:5001/orders", addedProducts)
+                //const response = await axios.post("http://localhost:5001/orders", addedProducts)
                 setAlert({ text: `Se realizo la compra exitosamente! con un total de $${total}`, type: TYPES.SUCCESS })
                 resetCart()
-                console.log(response)
             } catch (error) {
                 setAlert({ text: `Tuvimos inconvenientes en realizar su compra. Por favor intente de nuevo`, type: TYPES.ERROR })
             }
