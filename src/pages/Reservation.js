@@ -42,7 +42,7 @@ function Reservation() {
     const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
-        setAlert({ text: "Las reservas deben cancelarse con un día antes de anticipación", type: TYPES.WARNING })
+        setAlert({ text: "Las reservas deben cancelarse con un día antes de anticipación", type: TYPES.WARNING, timeout: 5000 })
 
         async function getBarbers() {
             setIsLoading(true)

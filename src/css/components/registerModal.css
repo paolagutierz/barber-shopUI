@@ -36,7 +36,6 @@
 }
 
 .botones {
-
     border: none;
     border-radius: 10px;
     padding: 10px 100px;
@@ -44,12 +43,34 @@
     color: white;
     margin: 15px 0;
     font-weight: bold;
+}
 
-
-
+.botones-disabled {
+    background: #8c8986;
 }
 
 .botones:active {
 
     transform: scale(1.2);
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    width: 30px;
+    height: 30px;
+    border: 10px solid #f3f3f3;
+    /* Light grey */
+    border-top: 10px solid #383636;
+    /* Black */
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
 }

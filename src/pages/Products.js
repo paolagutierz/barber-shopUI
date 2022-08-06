@@ -15,17 +15,17 @@ function Products() {
     useEffect(() => {
         async function fetchData() {
             try {
-                setIsLoading(true)
                 const response = await axios.get("http://localhost:5001/products")
                 setProducts(response.data.data)
             } catch (error) {
                 console.log(error)
                 setAlert({ text: DEFAULT_MESSAGES.SERVER_ERROR, type: TYPES.ERROR, timeout: 5000 })
-
             }
-            setIsLoading(false)
         }
+
+        setIsLoading(true)
         fetchData();
+        setIsLoading(false)
     }, [])
 
     return (

@@ -41,7 +41,7 @@ function Orders() {
     const { setAlert } = useContext(CartContext)
 
     useEffect(() => {
-        setAlert({ text: "Los pedidos pueden ser cancelados un dia antes de ser despachados", type: TYPES.WARNING })
+        setAlert({ text: "Los pedidos pueden ser cancelados un dia antes de ser despachados", type: TYPES.WARNING, timeout: 5000 })
 
         return (() => { setAlert(null) })
     }, [])

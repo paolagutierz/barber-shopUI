@@ -16,7 +16,7 @@ function ModalCalendar(props) {
     const [startDate, setStartDate] = useState(new Date(new Date().setHours(24)));
     const [time, setTime] = useState()
     const [timeAvailable, setTimeAvailable] = useState([])
-    const [isLoadingData, setIsLoadingData] = useState(false)
+    const [isLoadingData, setIsLoadingData] = useState(true)
 
     useEffect(() => {
         async function getTime() {
@@ -45,7 +45,7 @@ function ModalCalendar(props) {
                         {fakeResponse.map(time => <button className='time-buttons' onClick={() => { setTime(time) }}>{time}</button>)}
                     </div>
 
-                    <button className='reserve-button' onClick={() => console.log(startDate.toLocaleDateString() + " " + time)} disabled={isLoadingData ? true : false}>Reservar</button>
+                    <button className={isLoadingData ? "reserve-button-disabled" : "reserve-button"} onClick={() => console.log(startDate.toLocaleDateString() + " " + time)} disabled={isLoadingData ? true : false}>Reservar</button>
                 </div>
             </div>
         </Modal>
