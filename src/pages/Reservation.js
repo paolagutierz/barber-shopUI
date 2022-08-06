@@ -6,6 +6,7 @@ import { CartContext } from '../providers/cart'
 import { TYPES, DEFAULT_MESSAGES } from '../components/Alert'
 import axios from "axios"
 import Loading from '../components/Loading'
+import moment from "moment"
 
 function Reservation() {
 
@@ -70,7 +71,7 @@ function Reservation() {
                         <ul>
                             {reservations.map(reservation =>
                                 <li>
-                                    {`${reservation.barber.name} ${reservation.barber.lastName},${reservation.date}, ${reservation.time}:00hs`}
+                                    {`${reservation.barber.name} ${reservation.barber.lastName}, ${moment(reservation.date).format("YY/MM/DD")}, ${reservation.time}:00hs`}
                                     <button className="boton-lista" onClick={() => cancelReservation(reservation.id)}>Cancelar</button>
                                 </li>
                             )}
