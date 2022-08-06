@@ -9,16 +9,21 @@ import axios from "axios"
 
 function Cart() {
 
-    const { addedProducts, total, resetCart, setAlert } = useContext(CartContext)
+    const { addedProducts, total, resetCart, setAlert, jwt, setIsOpenLogin } = useContext(CartContext)
 
     const handlePay = async () => {
-        try {
-            const response = await axios.post("http://localhost:5001/orders", addedProducts)
-            setAlert({ text: `Se realizo la compra exitosamente! con un total de $${total}`, type: TYPES.SUCCESS })
-            resetCart()
-            console.log(response)
-        } catch (error) {
-            setAlert({ text: `Tuvimos inconvenientes en realizar su compra. Por favor intente de nuevo`, type: TYPES.ERROR })
+        if (jwt && jwt != "") {
+            try {
+                const response = await axios.post("http://localhost:5001/orders", addedProducts)
+                setAlert({ text: `Se realizo la compra exitosamente! con un total de $${total}`, type: TYPES.SUCCESS })
+                resetCart()
+                console.log(response)
+            } catch (error) {
+                setAlert({ text: `Tuvimos inconvenientes en realizar su compra. Por favor intente de nuevo`, type: TYPES.ERROR })
+            }
+        } else {
+            setAlert({ text: "Debe iniciar sesión para poder realizar compras", type: TYPES.WARNING })
+            setIsOpenLogin(true)
         }
     }
 

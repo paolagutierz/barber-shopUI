@@ -36,7 +36,7 @@ const fakeReservations = [
 
 function Reservation() {
 
-    const { setAlert } = useContext(CartContext)
+    const { setAlert, jwt } = useContext(CartContext)
 
     const [barbers, setBarbers] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -64,17 +64,19 @@ function Reservation() {
     return (
         <Page>
             <main>
-                <div className="reservas-lista">
-                    <h1>Reservas:</h1>
-                    <ul>
-                        {fakeReservations.map(reservation =>
-                            <li>
-                                {`${reservation.name} ${reservation.lastName},${reservation.date}, ${reservation.time}hs`}
-                                <button className="boton-lista">Cancelar</button>
-                            </li>
-                        )}
-                    </ul>
-                </div>
+                {jwt && jwt != "" &&
+                    <div className="reservas-lista">
+                        <h1>Reservas:</h1>
+                        <ul>
+                            {fakeReservations.map(reservation =>
+                                <li>
+                                    {`${reservation.name} ${reservation.lastName},${reservation.date}, ${reservation.time}hs`}
+                                    <button className="boton-lista">Cancelar</button>
+                                </li>
+                            )}
+                        </ul>
+                    </div>
+                }
                 <h1 className="crear-reserva">Crea tu reserva</h1>
                 <ul className="reserva">
                     {barbers.map(barber =>

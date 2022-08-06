@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppRouter from "./AppRouter";
 import { BrowserRouter } from "react-router-dom";
 import { CartContext } from "./providers/cart"
@@ -9,12 +9,21 @@ function App() {
   const [total, setTotal] = useState(0)
   const [addedProducts, setAddedProducts] = useState([])
   const [alert, setAlert] = useState()
+  const [jwt, setJwt] = useState()
+  const [isOpenLogin, setIsOpenLogin] = useState(false)
 
   const resetCart = () => {
     setAddedProducts([])
     setTotal(0)
     setProductsCantity(0)
   }
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("JWT");
+    if (jwt && jwt != "") {
+      setJwt(jwt)
+    }
+  }, [])
 
   const addProduct = (productToAdd) => {
     let addedProduct = addedProducts.find(product => product.id === productToAdd.id)
@@ -59,7 +68,7 @@ function App() {
   }
 
   return (
-    <CartContext.Provider value={{ total, setTotal, addedProducts, addProduct, removeProduct, resetCart, productsCantity, setAlert }}>
+    <CartContext.Provider value={{ total, setTotal, addedProducts, addProduct, removeProduct, resetCart, productsCantity, setAlert, jwt, setJwt, isOpenLogin, setIsOpenLogin }}>
       <BrowserRouter>
         {alert &&
           <Alert alert={alert} removeAlert={() => setAlert(null)} timeout={alert.timeout}></Alert>

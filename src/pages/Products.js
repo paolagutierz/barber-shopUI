@@ -26,6 +26,8 @@ function Products() {
         setIsLoading(true)
         fetchData();
         setIsLoading(false)
+
+        return (() => { setAlert() })
     }, [])
 
     return (

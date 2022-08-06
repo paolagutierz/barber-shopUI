@@ -4,6 +4,7 @@ import { TYPES, DEFAULT_MESSAGES } from "../components/Alert"
 import { CartContext } from "../providers/cart"
 import axios from "axios"
 import '../css/components/registerModal.css'
+import Spinner from './Spinner'
 
 function RegisterModal(props) {
 
@@ -83,7 +84,7 @@ function RegisterModal(props) {
                     <input type="password" placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} required />
                     <input type="password" placeholder="Confirm password" value={password2} onChange={(event) => setPassword2(event.target.value)} required />
                     {isLoading
-                        ? <div className='loading-spinner'></div>
+                        ? <Spinner></Spinner>
                         : <button className="botones" onClick={(event) => handleRegistration(event)}>Completar</button>
                     }
                 </form>
