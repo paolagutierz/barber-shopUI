@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Order({ id, products, price, date, isCancelable }) {
+function Order({ id, products, price, date, isCancelable, handleCancel }) {
     return (
         <div className="pedidos">
             <ul className="descripcion">
@@ -10,7 +10,7 @@ function Order({ id, products, price, date, isCancelable }) {
                 </ul>
                 <li>Precio: ${price}</li>
                 <li>Fecha de despacho: {date}</li>
-                {isCancelable ? <button className="boton-pedidos">Cancelar</button> : <h3>Despachado</h3>}
+                {isCancelable ? <button className="boton-pedidos" onClick={() => { handleCancel(id) }}>Cancelar</button> : <h3>Despachado</h3>}
             </ul>
         </div>
     )

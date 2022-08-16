@@ -1,50 +1,53 @@
-import React, { useContext, useEffect } from 'react'
-import { TYPES } from '../components/Alert'
+import React, { useContext, useEffect, useState } from 'react'
+import { TYPES, DEFAULT_MESSAGES } from '../components/Alert'
 import Order from '../components/Order'
 import Page from '../components/Page'
 import '../css/style-pedidos.css'
 import { CartContext } from '../providers/cart'
-
-const fakeResponse = [
-    {
-        id: '1',
-        products: ['Tónico para barba x1', 'Peine clásico x2'],
-        price: '70.00',
-        date: '08/09/2022',
-        isCancelable: true
-    },
-    {
-        id: '2',
-        products: ['Tónico para barba x1', 'Peine clásico x2'],
-        price: '70.00',
-        date: '08/09/2022',
-        isCancelable: true
-    },
-    {
-        id: '3',
-        products: ['Tónico para barba x1', 'Peine clásico x2'],
-        price: '70.00',
-        date: '08/09/2022',
-        isCancelable: false
-    },
-    {
-        id: '4',
-        products: ['Tónico para barba x1', 'Peine clásico x2'],
-        price: '70.00',
-        date: '08/09/2022',
-        isCancelable: false
-    }
-]
+import axios from "axios"
+import Loading from "../components/Loading"
 
 function Orders() {
 
-    const { setAlert } = useContext(CartContext)
+    const [orders, setOrders] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
+    const { setAlert, jwt } = useContext(CartContext)
 
     useEffect(() => {
         setAlert({ text: "Los pedidos pueden ser cancelados un dia antes de ser despachados", type: TYPES.WARNING, timeout: 5000 })
 
+        fetchData()
+
         return (() => { setAlert(null) })
     }, [])
+
+    const fetchData = async () => {
+        setIsLoading(true)
+        try {
+            axios.defaults.headers.common["Authorization"] = jwt;
+            const response = await axios.get("http://localhost:5001/orders")
+            setOrders(response.data.data)
+        } catch (error) {
+            console.log(error)
+            setAlert({ text: DEFAULT_MESSAGES.SERVER_ERROR, type: TYPES.ERROR, timeout: 5000 })
+        }
+        setIsLoading(false)
+    }
+
+    const handleCancel = async (id) => {
+        setIsLoading(true)
+        try {
+            axios.defaults.headers.common["Authorization"] = jwt;
+            await axios.delete("http://localhost:5001/orders/" + id)
+        } catch (error) {
+            console.log(error)
+            setAlert({ text: DEFAULT_MESSAGES.SERVER_ERROR, type: TYPES.ERROR, timeout: 5000 })
+        }
+        setIsLoading(false)
+
+        fetchData()
+    }
 
     return (
         <Page>
@@ -52,19 +55,20 @@ function Orders() {
                 <h1 className="titulo-pedidos">Pedidos pendientes</h1>
                 <div className="container1">
 
-                    {fakeResponse.filter(order => order.isCancelable).map(order =>
+                    {orders.filter(order => order.isCancelable).map(order =>
                         <Order id={order.id}
                             products={order.products}
                             price={order.price}
                             date={order.date}
-                            isCancelable={order.isCancelable}>
+                            isCancelable={order.isCancelable}
+                            handleCancel={handleCancel}>
                         </Order>
                     )}
                 </div>
 
                 <h1 className="titulo-pedidos">Pedidos despachados</h1>
                 <div className="container2">
-                    {fakeResponse.filter(order => !order.isCancelable).map(order =>
+                    {orders.filter(order => !order.isCancelable).map(order =>
                         <Order id={order.id}
                             products={order.products}
                             price={order.price}
@@ -74,6 +78,7 @@ function Orders() {
                     )}
                 </div>
             </main>
+            <Loading show={isLoading}></Loading>
         </Page>
     )
 }

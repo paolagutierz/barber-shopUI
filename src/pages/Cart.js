@@ -14,7 +14,16 @@ function Cart() {
     const handlePay = async () => {
         if (jwt && jwt != "") {
             try {
-                //const response = await axios.post("http://localhost:5001/orders", addedProducts)
+                const body = {
+                    price: total
+                }
+
+                body.products = addedProducts.map(product => {
+                    return { productId: product.id, quantity: product.quantity }
+                })
+
+                axios.defaults.headers.common["Authorization"] = jwt;
+                const response = await axios.post("http://localhost:5001/orders", body)
                 setAlert({ text: `Se realizo la compra exitosamente! con un total de $${total}`, type: TYPES.SUCCESS })
                 resetCart()
             } catch (error) {
@@ -40,13 +49,13 @@ function Cart() {
                         <h2 className="titulo-productos-cart">Productos:
                         </h2>
                         <ul className="productos-cart">
-                            {addedProducts.map(cart =>
+                            {addedProducts.map(product =>
                                 <CartProduct
-                                    name={cart.name}
-                                    quantity={cart.quantity}
-                                    imageUrl={cart.imageUrl}
-                                    id={cart.id}
-                                    price={cart.price}>
+                                    name={product.name}
+                                    quantity={product.quantity}
+                                    imageUrl={product.imageUrl}
+                                    id={product.id}
+                                    price={product.price}>
                                 </CartProduct>
                             )}
                         </ul>
